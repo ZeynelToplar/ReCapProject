@@ -11,7 +11,7 @@ namespace Entities.Concrete
     {
         public int Id { get; set; }
 
-        public int BranId { get; set; }
+        public int BrandId { get; set; }
 
         public int ColorId { get; set; }
 
