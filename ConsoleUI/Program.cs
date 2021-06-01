@@ -19,10 +19,10 @@ namespace ConsoleUI
             //brandManager.Add(new Brand { BrandId = 2, BrandName = "Toyota" });
             //colorManager.Add(new Color { ColorId = 1, ColorName = "Siyah" });
 
-            GetCarDetailTest(carManager);
+            //GetCarDetailTest(carManager);
 
 
-            //CarTest(carManager);
+            CarTest(carManager);
 
 
             Console.ReadLine();
@@ -30,7 +30,7 @@ namespace ConsoleUI
 
         private static void GetCarDetailTest(CarManager carManager)
         {
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine(car.CarName + "/" + car.BrandName + "/" + car.ColorName + "/" + car.DailyPrice);
             }
@@ -38,10 +38,21 @@ namespace ConsoleUI
 
         private static void CarTest(CarManager carManager)
         {
-            foreach (var car in carManager.GetAll())
+            var result = carManager.GetAll();
+
+            if (result.Success)
             {
-                Console.WriteLine(car.BranId + " " + car.ColorId + " " + car.ModelYear + " " + car.DailyPrice + " " + car.Description);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.BranId + " " + car.ColorId + " " + car.ModelYear + " " + car.DailyPrice + " " + car.Description);
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
+            
         }
     }
 }
