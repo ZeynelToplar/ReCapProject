@@ -30,5 +30,9 @@ namespace Business.Constants
         public static string CustomersListed = "Müşteriler listelendi";
         public static string RentalsListed = "Kiralık araçlar listelendi";
         public static string ReturnDateError = "Araba teslim edilememiştir";
+
+        public static string ImagesListed = "Resimler listelendi";
+        public static string ImageFound = "Resim bulundu";
+        public static string carImageLimit = "En fazla 5 adet resim yükleyebilirsiniz";
     }
 }
