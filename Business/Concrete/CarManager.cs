@@ -72,5 +72,14 @@ namespace Business.Concrete
 
             return new SuccessResult(Messages.CarUpdated);
         }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailById(int id)
+        {
+            if (_carDal.GetAllCarsDetails(c => c.Id == id) != null)
+            {
+                return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarsDetails(c => c.Id == id), Messages.RecordFound);
+            }
+            return new ErrorDataResult<List<CarDetailDto>>(Messages.IdInvalid);
+        }
     }
 }

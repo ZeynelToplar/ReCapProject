@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -34,7 +35,7 @@ namespace Business.Constants
 
         public static string ImagesListed = "Resimler listelendi";
         public static string ImageFound = "Resim bulundu";
-        public static string carImageLimit = "En fazla 5 adet resim yükleyebilirsiniz";
+        public static string carImageLimit = "En fazla 10 adet resim yükleyebilirsiniz";
 
         public static string AuthorizationDenied = "Yetkiniz yok.";
         public static string UserRegistered = "Kullanıcı kayıt edildi.";
@@ -43,5 +44,8 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Giriş başarılı.";
         public static string UserAlreadyExists = "Kullanıcı mevcut.";
         public static string AccessTokenCreated = "Token Oluşturuldu.";
+        public static string RecordsListed = "Kayıtlar listelendi.";
+        public static string RecordFound = "Kayıt Bulundu";
+        public static string IdInvalid = "Id geçersiz.";
     }
 }

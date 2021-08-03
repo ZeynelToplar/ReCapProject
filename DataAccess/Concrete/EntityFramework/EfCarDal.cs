@@ -14,6 +14,30 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, MyDBContext>, ICarDal
     {
+        public List<CarDetailDto> GetAllCarsDetails(Expression<Func<Car, bool>> filter = null)
+        {
+            using (MyDBContext context = new MyDBContext())
+            {
+                var result = from c in filter == null ? context.Cars.ToList() : context.Cars.Where(filter).ToList()
+                             join b in context.Brands
+                             on c.BrandId equals b.BrandId
+                             join clr in context.Colors
+                             on c.ColorId equals clr.ColorId
+                             select new CarDetailDto
+                             {
+                                 Id = c.Id,
+                                 BrandName = b.BrandName,
+                                 ColorName = clr.ColorName,
+                                 CarName = c.CarName,
+                                 DailyPrice = Convert.ToInt32(c.DailyPrice),
+                                 ModelYear = c.ModelYear,
+                                 Description = c.Description
+                             };
+                return result.ToList();
+            }
+            throw new NotImplementedException();
+        }
+
         public List<CarDetailDto> GetCarDetails()
         {
             using (MyDBContext context = new MyDBContext())
